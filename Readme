@@ -1,0 +1,24 @@
+waste-collection-system/
+│
+├── client/                    # React Frontend
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── context/ (optional)
+│   │   ├── App.js
+│   │   └── socket.js
+│   └── package.json
+│
+├── server/                    # Backend
+│   ├── config/
+│   │   └── db.js
+│   ├── models/
+│   │   └── Request.js
+│   ├── routes/
+│   │   └── requestRoutes.js
+│   ├── controllers/
+│   │   └── requestController.js
+│   ├── server.js
+│   └── package.json
+│
+└── README.md
