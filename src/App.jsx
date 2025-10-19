@@ -1,14 +1,16 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import 'leaflet/dist/leaflet.css'
+
+// import Cnavbar from '../Client_compnonents/Cnavbar'
+import HomePage from '../Client_compnonents/home'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-    <h1>I am Groot</h1>
+    <HomePage/>
     </>
   )
 }
