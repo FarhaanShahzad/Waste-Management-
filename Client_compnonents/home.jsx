@@ -22,7 +22,7 @@ const Home = () => {
       </div>
 
       {/* Cnavbar - 30% height */}
-      <div className="flex-grow-[3] overflow-auto bg-gray-100">
+      <div className="flex-grow-[2] overflow-auto bg-gray-100">
         <Cnavbar />
       </div>
 
