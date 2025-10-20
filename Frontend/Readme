@@ -1,0 +1,50 @@
+waste-collection-system/
+│
+├── client/                    # React Frontend
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── context/ (optional)
+│   │   ├── App.js
+│   │   └── socket.js
+│   └── package.json
+│
+├── server/                    # Backend
+│   ├── config/
+│   │   └── db.js
+│   ├── models/
+│   │   └── Request.js
+│   ├── routes/
+│   │   └── requestRoutes.js
+│   ├── controllers/
+│   │   └── requestController.js
+│   ├── server.js
+│   └── package.json
+│
+└── README.md
+
+
+---------------------------------------------------------------------------------------------------------------
+                                #Frontend-Structure 
+                                #admin-Aiswarya
+                                #Citizen-Farhaan
+
+client/
+│
+├── src/
+│   ├── pages/
+│   │   ├── user/              # all citizen-related pages
+│   │   │   ├── UserHome.jsx
+│   │   │   └── RequestForm.jsx
+│   │   ├── admin/             # all admin-related pages
+│   │   │   ├── AdminDashboard.jsx
+│   │   │   └── RequestDetails.jsx
+│   │   └── NotFound.jsx
+│   │
+│   ├── components/
+│   ├── context/
+│   ├── services/
+│   ├── socket/
+│   ├── router/
+│   ├── App.jsx
+│   └── main.jsx
