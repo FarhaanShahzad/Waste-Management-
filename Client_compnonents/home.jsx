@@ -1,33 +1,18 @@
-import React from 'react'
-import { MapContainer, TileLayer } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
-import Cnavbar from './Cnavbar'
+import React from "react";
 
 const Home = () => {
   return (
-    <div className="h-screen flex flex-col"> {/* Full screen height, column layout */}
+    <div className="h-screen flex flex-col">
+      {" "}
+      {/* Full screen height, column layout */}
+      {/* This section previously contained MapContainer, now removed as per user request */}
+      <div className="flex-grow-[7]">
+        {/* Content for the upper section of the home page can go here if needed */}
+      </div>
+      {/* This section previously contained Cnavbar, now removed as per user request */}
       
-      {/* Map - 70% height */}
-      <div className="flex-grow-[7]"> 
-        <MapContainer 
-          center={[22.5726, 88.3639]} 
-          zoom={13} 
-          className="h-full w-full"
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-        </MapContainer>
-      </div>
-
-      {/* Cnavbar - 30% height */}
-      <div className="flex-grow-[2] overflow-auto bg-gray-100">
-        <Cnavbar />
-      </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
