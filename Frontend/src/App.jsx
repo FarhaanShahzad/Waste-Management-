@@ -71,14 +71,12 @@ function ProtectedRoute({ children }) {
   }
 
   if (!user) {
-    // Redirect to login, but save the current location to return to after login
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   return children;
 }
 
-// Component for public routes (login/signup) that shouldn't be accessible when logged in
 function PublicRoute({ children }) {
   const { user, loading } = useAuth();
 
