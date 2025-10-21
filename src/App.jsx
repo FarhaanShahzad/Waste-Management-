@@ -62,6 +62,8 @@ function App() {
       </Routes>
     </>
   );
+          {/* Pass locationCoordinates to the Map component */}
+
 }
 
 export default App;
