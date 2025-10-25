@@ -8,9 +8,9 @@
              //check the token if token is valid  allow next
                      let token = req.headers?.authorization?.split(" ")[2];
 
-                     if(token)
+                       if(token)
                      {
-                        var decoded = jwt.verify(token, 'shhhhh');
+                        var decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
                         if(decoded){
                             if(role.includes(decoded.role))
@@ -37,15 +37,17 @@
 
 
 
-
-
+//
+//
 //  const authMiddleware =  (req , res , next) =>{
 //             //check the token if token is valid  allow next
+//
 //                     let token = req.headers?.authorization?.split(" ")[2];
 //
 //                     if(token)
 //                     {
 //                        var decoded = jwt.verify(token, 'shhhhh');
+//                        res.status(200).json({ tokenStr:  token});
 //
 //                        console.log(decoded)
 //
@@ -62,7 +64,7 @@
 //                        res.status(401).json({ msg: "not  through auth middleware" });
 //                     }
 // }
-//
+
 
  module.exports = authMiddleware;
 

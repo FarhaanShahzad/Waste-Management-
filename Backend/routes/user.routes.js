@@ -30,21 +30,18 @@ userRoutes.post("/signup", async (req, res) => {
 
 
 
-
-
-
 //// Login
 userRoutes.post("/login", async (req, res) => {
   try {
-      const { email, password } = req.body;
 
-       const user = await userModel.findOne({ email });
+      const { email, password } = req.body;
+      const user = await userModel.findOne({ email });
+
         if (!user) {
           return res.status(404).json({ msg: "User not found" });
         }
          const isMatch = await bcrypt.compare(password, user.password);
-         var token = jwt.sign({ userId: user._id ,role : user.role }, 'shhhhh',{ expiresIn: 20  } );
-
+         var token = jwt.sign({ userId: user._id ,role : user.role }, process.env.JWT_SECRET_KEY,{ expiresIn: 20  } );
 
         if (!isMatch) {
           return res.status(401).json({ msg: "Invalid credentials" });
@@ -67,17 +64,55 @@ passport.use(new GitHubStrategy({
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
     callbackURL: process.env.CALLBACK_URL
   },
-  function(accessToken, refreshToken, profile, done) {
-      return done(profile);
+  function (accessToken, refreshToken, profile, done) {
+    // You can save user info to DB here if needed
+    return done(null, profile);
   }
 ));
+
 
 
 
 //call the github login/authorization page
 
 userRoutes.get('/auth/github',
-  passport.authenticate('github', { scope: [ 'user:email' ] }));
+  passport.authenticate('github', {scope: [ 'user:email' ] }));
+
+
+
+
+
+
+
+
+
+//////call back routes in case of login success or failure
+//
+//userRoutes.get('/auth/github/callback',
+//  passport.authenticate('github', { session : false, failureRedirect: '/login' }),
+//  async function  (req, res) {
+//     const githubUserId = req.user.id
+//     const user = await userModel.find({profileId:githubUserId});
+//
+//     if(user.length == 0 ){
+//
+//     //if user not found then store it into db and generate token
+//      const NewUser = await userModel.create({profileId:githubUserId});
+//      var token = jwt.sign({ userId: NewUser._id ,role : NewUser.role }, process.env.JWT_SECRET_KEY,{ expiresIn: 20  } );
+//     res.json({ msg: "github Login success" , token});
+//}
+//
+////     }else{
+////     res.json({ msg: "github Login success" , token});
+////     }
+//
+//     res.json({ msg: "github Login success" , token});
+//  });
+//
+//
+
+
+
 
 
 //call back routes in case of login success or failure
@@ -99,6 +134,13 @@ userRoutes.get('/auth/github/callback',
 
 
   });
+
+
+
+
+
+
+
 
 
 
