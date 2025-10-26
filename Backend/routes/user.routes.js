@@ -86,32 +86,6 @@ userRoutes.get('/auth/github',
 
 
 
-//////call back routes in case of login success or failure
-//
-//userRoutes.get('/auth/github/callback',
-//  passport.authenticate('github', { session : false, failureRedirect: '/login' }),
-//  async function  (req, res) {
-//     const githubUserId = req.user.id
-//     const user = await userModel.find({profileId:githubUserId});
-//
-//     if(user.length == 0 ){
-//
-//     //if user not found then store it into db and generate token
-//      const NewUser = await userModel.create({profileId:githubUserId});
-//      var token = jwt.sign({ userId: NewUser._id ,role : NewUser.role }, process.env.JWT_SECRET_KEY,{ expiresIn: 20  } );
-//     res.json({ msg: "github Login success" , token});
-//}
-//
-////     }else{
-////     res.json({ msg: "github Login success" , token});
-////     }
-//
-//     res.json({ msg: "github Login success" , token});
-//  });
-//
-//
-
-
 
 
 
